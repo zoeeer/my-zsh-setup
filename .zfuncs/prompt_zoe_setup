@@ -1,0 +1,44 @@
+# zoe prompt theme
+
+prompt_zoe_help() {
+    cat <<'EOF'
+Simple prompt to display only the information you need.
+- highlighted parenthesised status if last command had non-zero status
+- PWD up to 3 levels
+- vcs branch info with changes indicated (add 'setopt prompt_subst' in your .zshrc)
+On the right:
+- bold + if shell is not at top level (may need tweaking if there
+  is another shell in the process history of your terminal)
+- number of background jobs in square brackets if non-zero
+- time with Ding! on the hour.
+I usually use this in a dark background terminal.
+EOF
+}
+
+setup_vcs_info() {
+    autoload -Uz vcs_info
+    zstyle ':vcs_info:*' enable git cvs svn
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' stagedstr '!'
+    zstyle ':vcs_info:*' unstagedstr '*'                                           
+    zstyle ':vcs_info:*' formats ' (%b%F{y}%c%F{mag}%u%f)'
+}
+
+prompt_zoe_setup() {
+    # set vcs info format
+    setup_vcs_info
+
+    PS1='%K{white}%F{red}%(?..(%?%))%f%k'\
+'%F{cyan}%3~'\
+'%F{green}${vcs_info_msg_0_}'\
+' %f%k%b%# '
+    RPS1='%K{black}%F{white}%B%(2L.+.)%(1j.[%j].)%b%f%k'\
+' %F{yellow}%(t.Ding!.%D{%L:%M:%S})'
+
+}
+
+precmd() {
+    vcs_info
+}
+
+prompt_zoe_setup "$@"
