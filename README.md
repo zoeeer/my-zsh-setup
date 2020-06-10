@@ -14,12 +14,13 @@ Here's what I did on top of the default rc file:
 ![](img/prompt_preview.png)
 
 This theme is modified based on the 'pws' theme along with the zsh distro. It prints minimal but useful info that I need (on my local computer):
-- status code if non-zero
+- status indicator: green '>' or red 'x'
 - PWD up to 3 levels
 - git branch info with changes indicated
     - `!` - staged changes
     - `*` - unstaged changes
 - on the right side:
+    - status code if non-zero
     - `+` sign if shell is not at top level
     - number of background jobs if any
     - time with Ding! on the hour
