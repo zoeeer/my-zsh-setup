@@ -23,6 +23,7 @@ setup_vcs_info() {
     zstyle ':vcs_info:*' stagedstr '!'
     zstyle ':vcs_info:*' unstagedstr '*'                                           
     zstyle ':vcs_info:*' formats ' %F{g}(%b%F{y}%c%F{mag}%u%F{g})%f'
+    zstyle ':vcs_info:*' actionformats ' %F{g}(%b%F{y}%c%F{mag}%u%F{g}|%a)%f'
 }
 
 prompt_zoe_setup() {
@@ -32,12 +33,12 @@ prompt_zoe_setup() {
     PS1='%B'\
 '%(?.%F{green}>.%F{red}x) '\
 '%F{cyan}%3~'\
-'%F{green}${vcs_info_msg_0_}'\
-' %f%k%b%# '
+'${vcs_info_msg_0_}'\
+' %f%b%# '
     RPS1=\
-'%K{white}%F{red}%(?..(%?%))'\
-'%K{black}%F{white}%B%(2L.+.)%(1j.[%j].)%b'\
-' %F{yellow}%(t.Ding!.%D{%L:%M:%S})%f%k'
+'%K{white}%F{red}%(?..(%?%))%k'\
+'%F{white}%B%(2L.+.)%(1j.[%j].)%b'\
+' %F{yellow}%(t.Ding!.%*)%f'
 
 }
 

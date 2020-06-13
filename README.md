@@ -13,12 +13,15 @@ Here's what I did on top of the default rc file:
 ## the prompt theme
 ![](img/prompt_preview.png)
 
-This theme is modified based on the 'pws' theme along with the zsh distro. It prints minimal but useful info that I need (on my local computer):
+This theme is modified based on the 'pws' theme along with the zsh distro, which prints minimal yet useful info. I tuned it a bit, still trying to make it clean.
+
+It prints:
 - status indicator: green '>' or red 'x'
 - PWD up to 3 levels
 - git branch info with changes indicated
     - `!` - staged changes
     - `*` - unstaged changes
+    - `|action` - action name when an action is active
 - on the right side:
     - status code if non-zero
     - `+` sign if shell is not at top level
